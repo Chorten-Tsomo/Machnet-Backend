@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"> 
+
+<bean id= "student1" class ="SetterInjection.Student">
+<property name="id" value="1"></property>
+<property name="name" value="Sean Lew"></property>
+
+</bean>
+
+
+<bean id="addressdetails" class="com.example.demo.Address">
+<property name="name" value="LA"></property>
+</bean> 
+
+<bean id= "studentdetails" class ="com.example.demo.Student">
+<property name="id" value="1"></property>
+<property name="name" value="Sean Lew"></property>
+<property name="address" ref="addressdetails"></property>
+</bean>
+
+
+<bean id="address2" class="ConstructorInjection.Address">
+<constructor-arg value="LA"></constructor-arg>
+</bean> 
+
+<bean id= "student2" class ="ConstructorInjection.Student">
+<constructor-arg type="int" value="1"></constructor-arg>
+<constructor-arg value="Sean Lew"></constructor-arg>
+<constructor-arg ref="addressdetails"></constructor-arg>
+</bean>
+
+<bean id="address" class="com.example.AutowiredInjection.Address">
+<property name="name" value="Manhattan"></property>
+</bean> 
+
+<!-- <bean id= "studentwire" class ="com.example.AutowiredInjection.Student" autowire="byName">
+<property name="id" value="1"></property>
+<property name="name" value="Sean Lew"></property>
+</bean>  -->
+
+<!--  <bean id= "studentwire" class ="com.example.AutowiredInjection.Student" autowire="byType">
+<property name="id" value="1"></property>
+<property name="name" value="Sean Lew"></property>
+</bean> -->
+
+<bean id= "studentwire" class ="com.example.AutowiredInjection.Student" autowire="constructor">
+<property name="id" value="1"></property>
+<property name="name" value="Sean Lew"></property>
+</bean>
+
+
+
+
+</beans>
