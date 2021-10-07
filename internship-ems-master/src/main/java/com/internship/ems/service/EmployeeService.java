@@ -1,7 +1,9 @@
 package com.internship.ems.service;
 
 
+import com.internship.ems.dao.DepartmentRepository;
 import com.internship.ems.dao.EmployeeRepository;
+import com.internship.ems.model.Department;
 import com.internship.ems.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,17 @@ import java.util.List;
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepo;
+    @Autowired
+    private DepartmentRepository departmentRepo;
 
-    public Employee saveEmployee(Employee employee){
+    public Employee addEmployee(Employee employee){
+        Department department = departmentRepo.findById(employee.getDepartment().getId()).orElse(null);
+        if(null == department){
+            department = new Department();
+        }
+        department.setDepartmentName(employee.getDepartment().getDepartmentName());
+        department.setDescription(employee.getDepartment().getDescription());
+        employee.setDepartment(department);
         return employeeRepo.save(employee);
     }
 
@@ -47,4 +58,8 @@ public class EmployeeService {
         employeeRepo.deleteById(id);
         return "Employee deleted!!!" + id;
     }
+
+
 }
+
+

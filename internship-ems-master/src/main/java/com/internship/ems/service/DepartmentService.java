@@ -1,6 +1,7 @@
 package com.internship.ems.service;
 
 import com.internship.ems.dao.DepartmentRepository;
+import com.internship.ems.dao.EmployeeRepository;
 import com.internship.ems.model.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 public class DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepo;
+
 
     public Department saveDepartment(Department department){
         return departmentRepo.save(department);

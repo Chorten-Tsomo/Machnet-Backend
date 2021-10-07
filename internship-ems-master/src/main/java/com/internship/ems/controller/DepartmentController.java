@@ -12,6 +12,7 @@ public class DepartmentController {
     @Autowired
     private DepartmentService service;
 
+
     @GetMapping(value = "/department")
     public List<Department> getAllDepartment(){
         return service.getAll();
