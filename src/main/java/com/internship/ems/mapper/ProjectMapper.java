@@ -14,5 +14,5 @@ public interface ProjectMapper {
     ProjectDto modelToDto(Project project);
     List<ProjectDto> modelsToDtos(List<Project> projects);
     @InheritInverseConfiguration
-    Project dtoToModel(ProjectDto projectDto);
+    Project DtoToModel(ProjectDto projectDto);
 }

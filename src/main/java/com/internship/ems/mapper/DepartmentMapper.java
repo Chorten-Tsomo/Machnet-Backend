@@ -16,6 +16,6 @@ public interface DepartmentMapper {
     List<DepartmentDto> modelsToDtos(List<Department> departments);
 
     @InheritInverseConfiguration
-    Department dtoToModel(DepartmentDto departmentDto);
+    Department DtoToModel(DepartmentDto departmentDto);
 
 }

@@ -16,13 +16,13 @@ public class EmployeeDao {
     @Autowired
     private EntityManager manager;
     public List<Employee> getEmployeeByNamedQuery(int departmentId) {
-        Query namedQuery = manager.createNamedQuery("tb_Employee.getEmployeeByNamedQuery");
+        Query namedQuery = manager.createNamedQuery("tb_employee.getEmployeeByNamedQuery");
         namedQuery.setParameter("id", departmentId);
         return namedQuery.getResultList();
     }
 
     public List<Employee> getEmployeeByTypedQuery(int departmentId) {
-        TypedQuery<Employee> typedQuery = manager.createQuery("select e from tb_Employee e where e.department.departmentId=:id", Employee.class);
+        TypedQuery<Employee> typedQuery = manager.createQuery("select e from Employee e where e.department.departmentId=:id", Employee.class);
         typedQuery.setParameter("id", departmentId);
         return typedQuery.getResultList();
     }

@@ -14,5 +14,5 @@ public interface SalaryMapper {
     SalaryDto modelToDto(Salary salary);
     List<SalaryDto> modelsToDtos(List<Salary> salaries);
     @InheritInverseConfiguration
-    Salary dtoToModel(SalaryDto salaryDto);
+    Salary DtoToModel(SalaryDto salaryDto);
 }

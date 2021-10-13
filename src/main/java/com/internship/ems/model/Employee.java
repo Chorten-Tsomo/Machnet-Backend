@@ -21,7 +21,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "tb_employee", schema = "ems", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})} )
+@Table(name = "employee", schema = "ems", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})} )
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,59 +31,58 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull(message = "Id may not be null")
-    @Column(name = "employee_id")
     private int employeeId;
 
-    @Column(name = "first_name")
+
     @NotNull(message = "first name may not be null")
     @Size(max = 50)
     private String  firstName;
 
 
-    @Column(name = "last_name")
+
     @NotNull(message = "Last name may not be null")
     @Size(max = 50)
     private String lastName;
 
-    @Column(name = "gender")
+
     @NotNull(message = "Gender may not be null")
     @Size(max = 20)
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
 
-    @Column(name = "age")
+
     @NotNull(message = "age may not be null")
     private int age;
 
-    @Column(name = "email")
+
     @NotNull(message = "email may not be null")
     @Size(max = 50)
     private String email;
 
-    @Column(name = "designation")
+
     @NotNull(message = "designation may not be null")
     @Size(max = 50)
     private String  designation;
 
-    @Column(name = "hire_date")
+
     @NotNull(message = "hiredate may not be null")
     private Date hireDate;
 
-    @Column(name = "resigned_date")
+
     private Date resignedDate;
 
-    @Column(name = "address")
+
     @Size(max = 100)
     private String address;
 
     @ManyToOne
-    @JoinColumn(name = "department_id")
+    @JoinColumn(name = "departmentId")
     @JsonBackReference(value = "employee-department")
     private Department department;
 
     @OneToOne
-    @JoinColumn(name = "salary_id")
+    @JoinColumn(name = "salaryId")
     @JsonBackReference(value = "employee-salary")
     public Salary salary;
 

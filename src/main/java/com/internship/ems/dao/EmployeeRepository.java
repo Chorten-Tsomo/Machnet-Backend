@@ -15,16 +15,16 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> findEmployeeByDesignation(String designation);
 
 
-    @Query(value = "SELECT * FROM  tb_employee WHERE first_name=:name", nativeQuery = true)
+    @Query(value = "SELECT * FROM  Employee WHERE first_name=:name", nativeQuery = true)
     List<Employee> getEmployeeByFirstName(@Param("name") String firstName);
 
-    @Query(value="SELECT e from tb_employee WHERE e.first_name=:firstName and e.designation=designation")
+    @Query(value="SELECT e from Employee WHERE e.first_name=:firstName and e.designation=designation")
     List<Employee> getEmployeeByFirstNameAndDesignation(@Param("firstName") String firstName, @Param("designation") String designation);
     @Modifying
-    @Query("UPDATE tb_employee e SET e.age=:age WHERE e.employeeId=:employeeId")
+    @Query("UPDATE Employee e SET e.age=:age WHERE e.employeeId=:employeeId")
     void updateEmployeeById(@Param("employeeId") int employeeId, @Param("age") int age);
 
     @Modifying
-    @Query("DELETE from tb_employee e WHERE e.employeeId=:employeeId")
+    @Query("DELETE from Employee e WHERE e.employeeId=:employeeId")
     void deleteEmployeeById(@Param("employeeId") int employeeId);
 }

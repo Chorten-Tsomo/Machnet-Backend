@@ -21,7 +21,7 @@ public class SalaryService {
     private SalaryMapper mapper;
 
     public SalaryDto saveSalary(SalaryDto salaryDto){
-        Salary salaryModel = mapper.dtoToModel( salaryDto );
+        Salary salaryModel = mapper.DtoToModel( salaryDto );
         return  mapper.modelToDto( salaryRepo.save(salaryModel) );
     }
 
@@ -34,7 +34,7 @@ public class SalaryService {
 
     }
     public SalaryDto updateSalary(int id, SalaryDto newSalaryDto){
-        Salary salaryModel = mapper.dtoToModel( newSalaryDto );
+        Salary salaryModel = mapper.DtoToModel( newSalaryDto );
         Salary existingSalary = salaryRepo.findById(id).orElseThrow(EntityNotFoundException::new);
         existingSalary.setIssue_date(salaryModel.getIssue_date());
         existingSalary.setAmount(salaryModel.getAmount());

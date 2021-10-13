@@ -20,7 +20,7 @@ public class ProjectService {
     private ProjectMapper mapper;
 
     public ProjectDto saveProject(ProjectDto projectDto){
-        Project projectModel = mapper.dtoToModel(projectDto);
+        Project projectModel = mapper.DtoToModel(projectDto);
         return  mapper.modelToDto( projectRepo.save(projectModel) );
     }
 
@@ -34,7 +34,7 @@ public class ProjectService {
         return  mapper.modelToDto( projectRepo.findById(id).orElseThrow(EntityNotFoundException::new) );
     }
     public ProjectDto updateProject(int id, ProjectDto newProjectDto){
-        Project newProjectModel=mapper.dtoToModel( newProjectDto );
+        Project newProjectModel=mapper.DtoToModel( newProjectDto );
 
         Project project = projectRepo.findById(id).orElseThrow(EntityNotFoundException::new);
         project.setProjectName(newProjectModel.getProjectName());

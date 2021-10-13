@@ -21,7 +21,7 @@ public class DepartmentService {
 
 
     public DepartmentDto saveDepartment(DepartmentDto departmentDto){
-        Department departmentModel = mapper.dtoToModel(departmentDto);
+        Department departmentModel = mapper.DtoToModel(departmentDto);
         Department departmentSaved = departmentRepo.save(departmentModel);
 
         return mapper.modelToDto(departmentSaved);
@@ -38,12 +38,11 @@ public class DepartmentService {
 
     }
     public DepartmentDto updateDepartment(int id, DepartmentDto newDepartmentDto){
-        Department departmentModel = mapper.dtoToModel(newDepartmentDto);
+        Department departmentModel = mapper.DtoToModel(newDepartmentDto);
         Department department = departmentRepo.findById(id).orElseThrow(EntityNotFoundException::new);
         department.setDepartmentName(departmentModel.getDepartmentName());
         department.setDescription(departmentModel.getDescription());
         departmentRepo.save(department);
-
         return mapper.modelToDto(department);
     }
     public String deleteDepartment(int id){
